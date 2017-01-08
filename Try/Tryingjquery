@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-15" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="Online Clock" />
+<meta name="keywords" content="" />
+<meta name="author" content="Time" />
+  <title>About Time</title>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+
+<script src="jquery.textfill.js"></script>
+<script src="jquery.textfill.min.js"></script>
+</head>

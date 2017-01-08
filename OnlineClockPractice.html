@@ -1,0 +1,108 @@
+	<!--
+	===================================================================
+	==TTTTTTTTTTTTTTTTTT=RRRRRRRRRRRR===IIIIIIIIIIIIII=====SSSSSSSS====
+	=========TTTT========RRRR=====RRRRR======IIII=======SSSSS====SSSS==
+	=========TTTT========RRRR======RRRR======IIII======SSSS============
+	=========TTTT========RRRR===RRRRR========IIII==========SSSSSSS=====
+	=========TTTT========RRRRRRR=============IIII=================SSSS=
+	=========TTTT========RRRR===RRRR=========IIII=======SSSS====SSSSS==
+	=========TTTT========RRRR=====RRRRR=IIIIIIIIIIIIII====SSSSSSSS=====
+	===================================================================
+	-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-15" />
+	<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+	<meta name="description" content="Online Clock" />
+	<meta name="keywords" content="" />
+	<meta name="author" content="Time" />
+		<title>About Time</title>
+	<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+	<link rel="stylesheet" type="text/css" href="style.css" />
+	<link href="https://cdnjs.cloudflare.com/ajax/libs/weather-icons/2.0.10/css/weather-icons.css" rel="stylesheet" />
+	<script src="http://code.jquery.com/jquery.js"></script>
+	<script src="jquery.simpleWeather.min.js"></script>
+
+
+	<script>
+	<!--jQuery.noConflict();--> 						//check if necessary
+			function GetClock(){
+				var d=new Date();
+				var nhour=d.getHours(),nmin=d.getMinutes();
+				if(nhour==0){nhour=12;}
+				else if(nhour>12){nhour-=12;}
+				if(nmin<=9) nmin="0"+nmin;
+				document.getElementById('clockbox').innerHTML=""+nhour+":"+nmin+"";
+			}
+
+			window.onload=function(){
+				GetClock();
+				setInterval(GetClock,1000);
+			}
+
+		<!-- WEATHER  -->
+
+			$(document).ready(function() {
+				$.simpleWeather({
+					location: 'Montreal, QC',
+					woeid: '',
+					unit: 'C',
+					success: function(weather) {
+						html = '<h2><i class="wi wi-yahoo-'+weather.code+'"></i> '+weather.temp+'&deg;'+weather.units.temp+'</h2>';
+						html += '<ul><li>'+weather.city+', '+weather.region+'</li>';
+						$("#weather").html(html);
+					},
+					error: function(error) {
+						$("#weather").html('<p>'+error+'</p>');
+					}
+				});
+			});
+		</script>
+	</head>
+
+
+	<body>
+		<div id="clockbox"></div>
+		<div id="hello" style="height: 80px;  width: 500px;"> <span> Hello Tristan </span> </div>
+
+		<form onSubmit="return checkAnswer();">
+			<input id="textbox" type="text" placeholder="Search on Google..." autocomplete="off"/>
+		</form>
+		<script>
+			function checkAnswer(){
+				var response = document.getElementById('textbox').value;
+				if (response == "mycourses" || response == "Mycourses" || response == "MyCourses" || response == "MYCOURSES" || response == "My courses" || response == "my courses" || response == "My Courses" || response == "MYCOURSES")
+					location = 'https://mycourses2.mcgill.ca/';
+				else if (response == "Strava" || response == "strava" || response == "STRAVA"){
+					location = 'https://www.strava.com/dashboard#_=_';
+				}
+				else if (response == "MINERVA" || response == "Minerva"|| response == "minerva"){
+					location = 'https://horizon.mcgill.ca/pban1/twbkwbis.P_WWWLogin'
+				}
+				else if (response == "youtube" || response == "Youtube" || response == "YOUTUBE"){
+					location = 'https://www.youtube.com/';
+				}
+				else if (response == "Face"|| response == "face"|| response == "facebook" || response == "FACEBOOK"|| response == "Facebook"){
+					location = 'https://www.facebook.com/'
+				}
+				else if (response == "Vain"|| response == "vain"|| response == "Vainqueur" || response == "VAIN"|| response == "VAINQ"){
+					location = 'http://www.clubvainqueurs.com/login?returnurl=/'
+				}
+				else {
+					location = 'http://www.google.com/search?q=' + encodeURIComponent(document.getElementById('textbox').value);
+				}
+				return false;
+			}
+		</script>
+
+
+
+		<div id="weather"><div>
+		<i class="wi wi-night-sleet"></i>
+		<script>
+			var random_number = Math.floor((Math.random() * 30) + 1);
+			document.body.style.backgroundImage = "url(\"Backgrounds/backgroundImage" + random_number + ".jpg\")";
+		</script>
+	</body>
+</html>

@@ -1,0 +1,45 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-15" />
+<meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="description" content="Online Clock" />
+<meta name="keywords" content="" />
+<meta name="author" content="Time" />
+	<title>About Time</title>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.8.23/jquery-ui.min.js"></script>
+<script src="script.js"></script>
+</head>
+<body>
+
+
+
+<script type="text/javascript">
+function GetClock(){
+var d=new Date();
+var nhour=d.getHours(),nmin=d.getMinutes(),ap;
+if(nhour==0){ap=" AM";nhour=12;}
+
+
+if(nmin<=9) nmin="0"+nmin;
+
+document.getElementById('clockbox').innerHTML=""+nhour+":"+nmin+"";
+}
+
+window.onload=function(){
+GetClock();
+setInterval(GetClock,1000);
+}
+</script>
+
+<div id="clockbox"></div>
+
+<h1 id="hello"> Hello Tristan </h1>
+
+
+</body>
+</html>
